@@ -26,12 +26,6 @@ if (( port < 1 || port > 65535 )); then
     exit 1
 fi
 
-# Verifier que l'hote est non vide
-if [[ -z "$host" ]]; then
-    echo "Erreur : le nom d’hôte ne peut pas être vide"
-    exit 1
-fi
-
 # Verifier que le nom d'hote est non vide
 if [[ -z "$host" ]]; then
     echo "Erreur : le nom d’hôte ne peut pas être vide"

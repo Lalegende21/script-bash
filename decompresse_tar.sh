@@ -9,7 +9,7 @@ FOLDER_PATH="/home/delfred/mes_programmes/projets/devops/scripts"
 
 # Chemin vers le dossier de logs
 log_dir="/home/delfred/mes_programmes/mes_logs"
-log_file="$log_dir/mes_logs.log"
+log_file="$log_dir/mes_logs_$(date '+%Y-%m-%d').log"
 
 # Vérifier si le dossier de logs existe
 if [[ ! -d "$log_dir" ]]; then

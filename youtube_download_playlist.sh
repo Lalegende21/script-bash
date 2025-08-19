@@ -1,5 +1,22 @@
 #!/bin/bash
 
+set -euo pipefail
+trap 'echo "Erreur à la ligne $LINENO"; exit 1' ERR
+
+
+# Chemin vers le dossier de logs
+log_dir="/home/delfred/mes_programmes/mes_logs"
+log_file="$log_dir/mes_logs_$(date '+%Y-%m-%d').log"
+
+# Vérifier si le dossier de logs existe
+if [[ ! -d "$log_dir" ]]; then
+    mkdir -p "$log_dir"
+fi
+
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$log_file"
+}
+
 # ─── YOUTUBE VIDEO DOWNLOADER HIGH QUALITY ───
 
 # Demander l'URL de la vidéo
@@ -16,7 +33,7 @@ yt-dlp \
     --merge-output-format mp4 \
     "$playlist_url"
 
-echo ""
-echo ""
-echo "✅ Téléchargement terminé !"
-echo "📁 Fichier disponible dans : $download_dir"
+log ""
+log ""
+log "✅ Téléchargement terminé !"
+log "📁 Fichier disponible dans : $download_dir"
